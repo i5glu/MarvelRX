@@ -17,6 +17,7 @@
 		21D3B05D23D33E90008EE504 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B05C23D33E90008EE504 /* StringExtension.swift */; };
 		21D3B06023D33EC6008EE504 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B05F23D33EC6008EE504 /* Character.swift */; };
 		21D3B06323D33F21008EE504 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B06223D33F21008EE504 /* APIConstants.swift */; };
+		21D3B06523D33F54008EE504 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B06423D33F54008EE504 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		21D3B05C23D33E90008EE504 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		21D3B05F23D33EC6008EE504 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		21D3B06223D33F21008EE504 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		21D3B06423D33F54008EE504 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				21D3B06223D33F21008EE504 /* APIConstants.swift */,
+				21D3B06423D33F54008EE504 /* API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				21D3B06023D33EC6008EE504 /* Character.swift in Sources */,
 				21D3B03723D33D94008EE504 /* AppDelegate.swift in Sources */,
 				21D3B03923D33D94008EE504 /* SceneDelegate.swift in Sources */,
+				21D3B06523D33F54008EE504 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
