@@ -16,6 +16,7 @@
 		21D3B04E23D33D95008EE504 /* MarvelRXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B04D23D33D95008EE504 /* MarvelRXTests.swift */; };
 		21D3B05D23D33E90008EE504 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B05C23D33E90008EE504 /* StringExtension.swift */; };
 		21D3B06023D33EC6008EE504 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B05F23D33EC6008EE504 /* Character.swift */; };
+		21D3B06323D33F21008EE504 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B06223D33F21008EE504 /* APIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		21D3B04F23D33D95008EE504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21D3B05C23D33E90008EE504 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		21D3B05F23D33EC6008EE504 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		21D3B06223D33F21008EE504 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		21D3B03523D33D94008EE504 /* MarvelRX */ = {
 			isa = PBXGroup;
 			children = (
+				21D3B06123D33F0F008EE504 /* API */,
 				21D3B05E23D33EB0008EE504 /* Models */,
 				21D3B05B23D33E7C008EE504 /* Helpers */,
 				21D3B03623D33D94008EE504 /* AppDelegate.swift */,
@@ -119,6 +122,14 @@
 				21D3B05F23D33EC6008EE504 /* Character.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		21D3B06123D33F0F008EE504 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				21D3B06223D33F21008EE504 /* APIConstants.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +235,7 @@
 			files = (
 				21D3B05D23D33E90008EE504 /* StringExtension.swift in Sources */,
 				21D3B03B23D33D94008EE504 /* ViewController.swift in Sources */,
+				21D3B06323D33F21008EE504 /* APIConstants.swift in Sources */,
 				21D3B06023D33EC6008EE504 /* Character.swift in Sources */,
 				21D3B03723D33D94008EE504 /* AppDelegate.swift in Sources */,
 				21D3B03923D33D94008EE504 /* SceneDelegate.swift in Sources */,
