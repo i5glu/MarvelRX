@@ -11,14 +11,12 @@ import RxSwift
 import RxCocoa
 
 class CharactersViewController: UITableViewController {
-    let api = API()
-    let disposeBag = DisposeBag()
+    private let api = API()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.dataSource = nil
-        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
+        configureTableView()
 
         api.characters.subscribeOn(MainScheduler.instance).map {
             $0.data.results
@@ -35,6 +33,11 @@ class CharactersViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         150
+    }
+
+    private func configureTableView() {
+        tableView.dataSource = nil
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
     }
 }
 
