@@ -7,22 +7,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class API {
     private let session = URLSession.shared
 
-    func characters(completion: (Result<CharacterDataWrapper, Error>) -> Void) {
-        var request = URLRequest(url: APIConstants.charactersURL)
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-
-        session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else {
-                return
-            }
-
-            let characters: CharacterDataWrapper = try! JSONDecoder().decode(CharacterDataWrapper.self, from: data)
-
-            print(characters)
-        }.resume()
+    var characters: Observable<CharacterDataWrapper> {
+        let request = URLRequest(url: APIConstants.charactersURL)
+        return session.rx.data(request: request).map {
+            try JSONDecoder().decode(CharacterDataWrapper.self, from: $0)
+        }
     }
 }
