@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class CharacterCell: UITableViewCell {
     static let reuseIdentifier = String(describing: CharacterCell.self)
@@ -32,6 +34,8 @@ final class CharacterCell: UITableViewCell {
     private let characterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 50
+        imageView.clipsToBounds = true
 
         return imageView
     }()
@@ -50,12 +54,12 @@ final class CharacterCell: UITableViewCell {
 
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10)
-            make.left.equalTo(characterImageView).offset(5)
+            make.left.equalTo(characterImageView.snp.right).offset(10)
             make.right.equalToSuperview().offset(-15)
         }
 
         characterImageView.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 40, height: 40))
+            make.size.equalTo(CGSize(width: 100, height: 100))
             make.top.equalToSuperview().offset(10)
             make.left.equalToSuperview().offset(15)
         }
@@ -67,9 +71,19 @@ final class CharacterCell: UITableViewCell {
         }
     }
 
+    private let disposeBag = DisposeBag()
+
     func configure(with model: CharacterModel) {
         nameLabel.text = model.name
         descLabel.text = model.description
+        model.image.observeOn(MainScheduler.instance).bind { [weak self] in
+            self?.characterImageView.image = $0
+        }.disposed(by: disposeBag)
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        characterImageView.image = nil
     }
 
     required init?(coder: NSCoder) {

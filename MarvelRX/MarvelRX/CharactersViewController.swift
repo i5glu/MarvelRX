@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 class CharactersViewController: UITableViewController {
-
     let api = API()
     let disposeBag = DisposeBag()
 
@@ -25,7 +24,9 @@ class CharactersViewController: UITableViewController {
             $0.data.results
         }.map {
             $0.map {
-                CharacterModel(name: $0.name, imageURL: $0.thumbnail.url, description: $0.description)
+                CharacterModel(name: $0.name,
+                               description: $0.description,
+                               image: self.api.loadImage(with: $0.thumbnail.url))
             }
         }.bind(to: tableView.rx.items(cellIdentifier: CharacterCell.reuseIdentifier, cellType: CharacterCell.self)) { row, model, cell in
             cell.configure(with: model)
