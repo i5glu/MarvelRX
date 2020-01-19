@@ -11,7 +11,7 @@ import Foundation
 struct CharacterDataWrapper: Decodable {
     let code: Int
     let copyright: String?
-    let data: CharacterDataContainer?
+    let data: CharacterDataContainer
     let etag: String?
 }
 
@@ -25,6 +25,7 @@ struct CharacterDataContainer: Decodable {
 
 struct Character: Decodable {
     let id: Int
+    let name: String
     let description: String?
     let resourceURI: String?
     let thumbnail: APIImage
@@ -33,6 +34,10 @@ struct Character: Decodable {
 struct APIImage: Decodable {
     let path: String
     let fileExtension: String
+
+    var url: URL {
+        URL(string: "\(path).\(fileExtension)")!
+    }
 
     enum CodingKeys: String, CodingKey {
         case path
