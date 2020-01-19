@@ -20,6 +20,9 @@
 		21D3B06023D33EC6008EE504 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B05F23D33EC6008EE504 /* Character.swift */; };
 		21D3B06323D33F21008EE504 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B06223D33F21008EE504 /* APIConstants.swift */; };
 		21D3B06523D33F54008EE504 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B06423D33F54008EE504 /* API.swift */; };
+		21D6C1BB23D43868004E64DB /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D6C1BA23D43868004E64DB /* CharacterCell.swift */; };
+		21D6C1BE23D43D7C004E64DB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 21D6C1BD23D43D7C004E64DB /* SnapKit */; };
+		21D6C1C123D43F64004E64DB /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D6C1C023D43F64004E64DB /* CharacterModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,8 @@
 		21D3B05F23D33EC6008EE504 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		21D3B06223D33F21008EE504 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		21D3B06423D33F54008EE504 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		21D6C1BA23D43868004E64DB /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		21D6C1C023D43F64004E64DB /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D6C1BE23D43D7C004E64DB /* SnapKit in Frameworks */,
 				21B0F1A223D3427600BEEC6F /* RxCocoa in Frameworks */,
 				21B0F1A023D3427600BEEC6F /* RxSwift in Frameworks */,
 			);
@@ -91,6 +97,8 @@
 		21D3B03523D33D94008EE504 /* MarvelRX */ = {
 			isa = PBXGroup;
 			children = (
+				21D6C1BF23D43F4E004E64DB /* ViewModel */,
+				21D6C1B923D43855004E64DB /* View */,
 				21D3B06123D33F0F008EE504 /* API */,
 				21D3B05E23D33EB0008EE504 /* Models */,
 				21D3B05B23D33E7C008EE504 /* Helpers */,
@@ -139,6 +147,22 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		21D6C1B923D43855004E64DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21D6C1BA23D43868004E64DB /* CharacterCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		21D6C1BF23D43F4E004E64DB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				21D6C1C023D43F64004E64DB /* CharacterModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,6 +182,7 @@
 			packageProductDependencies = (
 				21B0F19F23D3427600BEEC6F /* RxSwift */,
 				21B0F1A123D3427600BEEC6F /* RxCocoa */,
+				21D6C1BD23D43D7C004E64DB /* SnapKit */,
 			);
 			productName = MarvelRX;
 			productReference = 21D3B03323D33D94008EE504 /* MarvelRX.app */;
@@ -211,6 +236,7 @@
 			mainGroup = 21D3B02A23D33D93008EE504;
 			packageReferences = (
 				21B0F19E23D3427600BEEC6F /* XCRemoteSwiftPackageReference "RxSwift" */,
+				21D6C1BC23D43D7C004E64DB /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 21D3B03423D33D94008EE504 /* Products */;
 			projectDirPath = "";
@@ -250,8 +276,10 @@
 				21D3B05D23D33E90008EE504 /* StringExtension.swift in Sources */,
 				21D3B03B23D33D94008EE504 /* ViewController.swift in Sources */,
 				21D3B06323D33F21008EE504 /* APIConstants.swift in Sources */,
+				21D6C1BB23D43868004E64DB /* CharacterCell.swift in Sources */,
 				21D3B06023D33EC6008EE504 /* Character.swift in Sources */,
 				21D3B03723D33D94008EE504 /* AppDelegate.swift in Sources */,
+				21D6C1C123D43F64004E64DB /* CharacterModel.swift in Sources */,
 				21D3B03923D33D94008EE504 /* SceneDelegate.swift in Sources */,
 				21D3B06523D33F54008EE504 /* API.swift in Sources */,
 			);
@@ -530,6 +558,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		21D6C1BC23D43D7C004E64DB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -542,6 +578,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 21B0F19E23D3427600BEEC6F /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
+		};
+		21D6C1BD23D43D7C004E64DB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21D6C1BC23D43D7C004E64DB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
