@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 final class CharacterCell: UITableViewCell {
+    static let reuseIdentifier = String(describing: CharacterCell.self)
+
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +23,7 @@ final class CharacterCell: UITableViewCell {
     private let descLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 5
 
         return label
@@ -34,6 +36,11 @@ final class CharacterCell: UITableViewCell {
         return imageView
     }()
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        descLabel.preferredMaxLayoutWidth = descLabel.frame.width
+    }
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -42,15 +49,15 @@ final class CharacterCell: UITableViewCell {
         contentView.addSubview(characterImageView)
 
         nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView).offset(10)
+            make.top.equalToSuperview().offset(10)
             make.left.equalTo(characterImageView).offset(5)
-            make.right.equalTo(contentView).offset(15)
+            make.right.equalToSuperview().offset(-15)
         }
 
         characterImageView.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: 40, height: 40))
-            make.top.equalTo(contentView).offset(10)
-            make.left.equalTo(contentView).offset(15)
+            make.top.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(15)
         }
 
         descLabel.snp.makeConstraints { (make) in
