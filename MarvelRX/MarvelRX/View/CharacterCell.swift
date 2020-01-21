@@ -16,7 +16,6 @@ final class CharacterCell: UITableViewCell {
 
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 18)
 
         return label
@@ -24,7 +23,6 @@ final class CharacterCell: UITableViewCell {
 
     private let descLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 5
 
@@ -33,7 +31,6 @@ final class CharacterCell: UITableViewCell {
 
     private let characterImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
 
