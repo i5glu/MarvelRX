@@ -14,11 +14,15 @@ final class API {
     private let session: URLSession = .shared
     private let cache: URLCache = .shared
 
-    var characters: Observable<CharacterDataWrapper> {
-        let request = URLRequest(url: APIConstants.charactersURL)
+    func characters(offset: Int) -> Observable<CharacterDataWrapper> {
+        let request = URLRequest(url: APIConstants.charactersURL(offset: offset))
         return session.rx.data(request: request).map {
             try JSONDecoder().decode(CharacterDataWrapper.self, from: $0)
         }
+    }
+
+    var characters: Observable<CharacterDataWrapper> {
+        characters(offset: 0)
     }
 
     func loadImage(with url: URL) -> Observable<UIImage?> {

@@ -9,10 +9,11 @@
 import Foundation
 
 enum APIConstants {
-    static var charactersURL: URL {
+    static func charactersURL(offset: Int) -> URL {
         let ts = timestamp
-        return URL(string:baseURL + "/characters?apikey=\(publicKey)&hash=\(hash(with: ts))&ts=\(ts)")!
+        return URL(string:baseURL + "/characters?apikey=\(publicKey)&hash=\(hash(with: ts))&ts=\(ts)&offset=\(offset)")!
     }
+
 
     private static var timestamp: Int {
         Int(Date().timeIntervalSince1970)
