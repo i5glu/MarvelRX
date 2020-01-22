@@ -13,6 +13,7 @@ import RxCocoa
 
 final class CharacterCell: UITableViewCell {
     static let reuseIdentifier = String(describing: CharacterCell.self)
+    private var bag = DisposeBag()
 
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -68,19 +69,18 @@ final class CharacterCell: UITableViewCell {
         }
     }
 
-    private let disposeBag = DisposeBag()
-
     func configure(with model: CharacterModel) {
         nameLabel.text = model.name
         descLabel.text = model.description
-        model.image.observeOn(MainScheduler.instance).bind { [weak self] in
-            self?.characterImageView.image = $0
-        }.disposed(by: disposeBag)
+        model.image.asDriver(onErrorJustReturn: nil)
+                    .drive(characterImageView.rx.image).disposed(by: bag)
+
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         characterImageView.image = nil
+        bag = DisposeBag()
     }
 
     required init?(coder: NSCoder) {

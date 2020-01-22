@@ -29,12 +29,8 @@ final class API {
         let request = URLRequest(url: url)
 
         if let cachedResponse = cache.cachedResponse(for: request) {
-            return Observable<UIImage?>.create { observer -> Disposable in
-                observer.on(.next(UIImage(data: cachedResponse.data)))
-                observer.on(.completed)
-
-                return Disposables.create()
-            }
+            let image = UIImage(data: cachedResponse.data)
+            return Observable<UIImage?>.just(image)
         }
 
         return session.rx.response(request: request).map { [weak self] (response, data) -> UIImage? in
