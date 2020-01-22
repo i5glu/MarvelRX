@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2110F5FD23D8783300CD2B2F /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110F5FC23D8783300CD2B2F /* CharactersListViewModel.swift */; };
 		21B0F1A023D3427600BEEC6F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 21B0F19F23D3427600BEEC6F /* RxSwift */; };
 		21B0F1A223D3427600BEEC6F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 21B0F1A123D3427600BEEC6F /* RxCocoa */; };
 		21D3B03723D33D94008EE504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3B03623D33D94008EE504 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2110F5FC23D8783300CD2B2F /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 		21D3B03323D33D94008EE504 /* MarvelRX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelRX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D3B03623D33D94008EE504 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21D3B03823D33D94008EE504 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				21D6C1C023D43F64004E64DB /* CharacterModel.swift */,
+				2110F5FC23D8783300CD2B2F /* CharactersListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				21D3B03B23D33D94008EE504 /* CharactersViewController.swift in Sources */,
 				21D3B06323D33F21008EE504 /* APIConstants.swift in Sources */,
 				21D6C1BB23D43868004E64DB /* CharacterCell.swift in Sources */,
+				2110F5FD23D8783300CD2B2F /* CharactersListViewModel.swift in Sources */,
 				21D3B06023D33EC6008EE504 /* Character.swift in Sources */,
 				21D3B03723D33D94008EE504 /* AppDelegate.swift in Sources */,
 				21D6C1C123D43F64004E64DB /* CharacterModel.swift in Sources */,
