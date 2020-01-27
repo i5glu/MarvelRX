@@ -15,8 +15,12 @@ final class API {
     private let cache: URLCache = .shared
 
     func characters(offset: Int) -> Observable<CharacterDataWrapper> {
-        let request = URLRequest(url: APIConstants.charactersURL(offset: offset))
-        return session.rx.data(request: request).map {
+        let response = Observable.from([APIConstants.charactersURL(offset: offset)])
+        return response.map {
+            URLRequest(url: $0)
+        }.flatMap { [unowned self] in
+            self.session.rx.data(request: $0)
+        }.map {
             try JSONDecoder().decode(CharacterDataWrapper.self, from: $0)
         }
     }
@@ -33,10 +37,13 @@ final class API {
             return Observable<UIImage?>.just(image)
         }
 
-        return session.rx.response(request: request).map { [weak self] (response, data) -> UIImage? in
-            self?.cache.storeCachedResponse(CachedURLResponse(response: response, data: data), for: request)
-
-            return UIImage(data: data)
+        return Observable.from([request]).flatMap { [unowned self] in
+            self.session.rx.response(request: $0)
+        }.do(onNext: { [weak self] in
+            let cachedResponse = CachedURLResponse(response: $0.response, data: $0.data)
+            self?.cache.storeCachedResponse(cachedResponse, for: request)
+        }).map {
+            UIImage(data: $0.data)
         }
     }
 }

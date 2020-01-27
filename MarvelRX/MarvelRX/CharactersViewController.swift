@@ -18,6 +18,8 @@ class CharactersViewController: UITableViewController {
         super.viewDidLoad()
         configureTableView()
 
+        viewModel.loadNextPage()
+
         viewModel.characters.drive(tableView.rx.items(cellIdentifier: CharacterCell.reuseIdentifier, cellType: CharacterCell.self)) { row, model, cell in
             cell.configure(with: model)
         }.disposed(by: bag)
