@@ -32,7 +32,7 @@ final class CharacterCell: UITableViewCell {
 
     private let characterImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 50
+        imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
 
         return imageView
