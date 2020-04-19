@@ -11,14 +11,14 @@ import RxSwift
 import RxCocoa
 
 class CharactersViewController: UITableViewController {
-    private let viewModel = CharactersListViewModel()
+    private let viewModel: CharactersListViewModelProtocol = CharactersListViewModel()
     private let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
 
-        viewModel.loadNextPage()
+        viewModel.loadCharacters.onNext(0)
 
         viewModel.characters.drive(tableView.rx.items(cellIdentifier: CharacterCell.reuseIdentifier, cellType: CharacterCell.self)) { row, model, cell in
             cell.configure(with: model)
