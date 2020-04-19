@@ -28,17 +28,11 @@ final class CharactersListViewModel: CharactersListViewModelProtocol {
     private(set) var saveCharacter = PublishSubject<CharacterModel>()
 
     init() {
-        saveCharacter.subscribe(onNext: { [unowned self] (characterModel) in
+        saveCharacter.subscribe(onNext: { [unowned self] (character) in
             var characters = self.charactersSubject.value
 
-            guard let index = (characters.firstIndex { $0.id == characterModel.id }) else {
-                return
-            }
 
-            var character = characters.remove(at: index)
-            character.isFave.toggle()
-            characters.insert(character, at: index)
-
+            characters[self.characterIndex(character)].isFave.toggle()
             self.charactersSubject.accept(characters)
         }).disposed(by: bag)
 
@@ -56,5 +50,9 @@ final class CharactersListViewModel: CharactersListViewModelProtocol {
                 }
             }).disposed(by: self.bag)
         }).disposed(by: bag)
+    }
+
+    private func characterIndex(_ character: CharacterModel) -> Int {
+        charactersSubject.value.firstIndex { $0.id == character.id }!
     }
 }
