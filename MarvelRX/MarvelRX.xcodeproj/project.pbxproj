@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21006AE5244C533600B6302A /* FaveCharactersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21006AE4244C533600B6302A /* FaveCharactersStorage.swift */; };
 		2110F5FD23D8783300CD2B2F /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110F5FC23D8783300CD2B2F /* CharactersListViewModel.swift */; };
 		21B0F1A023D3427600BEEC6F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 21B0F19F23D3427600BEEC6F /* RxSwift */; };
 		21B0F1A223D3427600BEEC6F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 21B0F1A123D3427600BEEC6F /* RxCocoa */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21006AE4244C533600B6302A /* FaveCharactersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaveCharactersStorage.swift; sourceTree = "<group>"; };
 		2110F5FC23D8783300CD2B2F /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 		21D3B03323D33D94008EE504 /* MarvelRX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelRX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D3B03623D33D94008EE504 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21006AE6244C53C500B6302A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				21D3B06123D33F0F008EE504 /* API */,
+				21006AE4244C533600B6302A /* FaveCharactersStorage.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		21D3B02A23D33D93008EE504 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +110,9 @@
 		21D3B03523D33D94008EE504 /* MarvelRX */ = {
 			isa = PBXGroup;
 			children = (
+				21006AE6244C53C500B6302A /* Service */,
 				21D6C1BF23D43F4E004E64DB /* ViewModel */,
 				21D6C1B923D43855004E64DB /* View */,
-				21D3B06123D33F0F008EE504 /* API */,
 				21D3B05E23D33EB0008EE504 /* Models */,
 				21D3B05B23D33E7C008EE504 /* Helpers */,
 				21D3B03623D33D94008EE504 /* AppDelegate.swift */,
@@ -281,6 +292,7 @@
 				21D3B06323D33F21008EE504 /* APIConstants.swift in Sources */,
 				21D6C1BB23D43868004E64DB /* CharacterCell.swift in Sources */,
 				2110F5FD23D8783300CD2B2F /* CharactersListViewModel.swift in Sources */,
+				21006AE5244C533600B6302A /* FaveCharactersStorage.swift in Sources */,
 				21D3B06023D33EC6008EE504 /* Character.swift in Sources */,
 				21D3B03723D33D94008EE504 /* AppDelegate.swift in Sources */,
 				21D6C1C123D43F64004E64DB /* CharacterModel.swift in Sources */,
