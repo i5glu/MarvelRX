@@ -38,6 +38,14 @@ final class CharacterCell: UITableViewCell {
         return imageView
     }()
 
+    private let favoritesButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Star"), for: .normal)
+        button.setImage(UIImage(named: "StarFilled"), for: .highlighted)
+
+        return button
+    }()
+
     override func layoutSubviews() {
         super.layoutSubviews()
         descLabel.preferredMaxLayoutWidth = descLabel.frame.width
@@ -49,11 +57,12 @@ final class CharacterCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(descLabel)
         contentView.addSubview(characterImageView)
+        contentView.addSubview(favoritesButton)
 
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10)
             make.left.equalTo(characterImageView.snp.right).offset(10)
-            make.right.equalToSuperview().offset(-15)
+            make.right.equalTo(favoritesButton.snp.left)
         }
 
         characterImageView.snp.makeConstraints { (make) in
@@ -66,6 +75,12 @@ final class CharacterCell: UITableViewCell {
             make.top.equalTo(nameLabel.snp.bottom).offset(5)
             make.left.equalTo(nameLabel.snp.left)
             make.right.equalTo(nameLabel.snp.right)
+        }
+
+        favoritesButton.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.right.equalToSuperview()
+            make.size.equalTo(CGSize(width: 44, height: 44))
         }
     }
 
