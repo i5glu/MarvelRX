@@ -8,6 +8,8 @@
 import Foundation
 
 final class FaveCharactersStorage {
+    static let shared = FaveCharactersStorage()
+
     private var characters: [Character] = []
 
     func save(character: Character) {

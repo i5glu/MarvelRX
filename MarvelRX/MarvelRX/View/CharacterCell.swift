@@ -38,7 +38,7 @@ final class CharacterCell: UITableViewCell {
         return imageView
     }()
 
-    private(set) var favoritesButton: UIButton = {
+    private(set) var faveButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "Star"), for: .normal)
         button.setImage(UIImage(named: "StarFilled"), for: .highlighted)
@@ -57,12 +57,12 @@ final class CharacterCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(descLabel)
         contentView.addSubview(characterImageView)
-        contentView.addSubview(favoritesButton)
+        contentView.addSubview(faveButton)
 
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10)
             make.left.equalTo(characterImageView.snp.right).offset(10)
-            make.right.equalTo(favoritesButton.snp.left)
+            make.right.equalTo(faveButton.snp.left)
         }
 
         characterImageView.snp.makeConstraints { (make) in
@@ -77,7 +77,7 @@ final class CharacterCell: UITableViewCell {
             make.right.equalTo(nameLabel.snp.right)
         }
 
-        favoritesButton.snp.makeConstraints { (make) in
+        faveButton.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.right.equalToSuperview()
             make.size.equalTo(CGSize(width: 44, height: 44))
@@ -89,6 +89,15 @@ final class CharacterCell: UITableViewCell {
         descLabel.text = model.description
         model.image.asDriver(onErrorJustReturn: nil)
                     .drive(characterImageView.rx.image).disposed(by: bag)
+
+        if model.isFave {
+            faveButton.setImage(UIImage(named: "StarFilled"), for: .normal)
+            faveButton.setImage(UIImage(named: "Star"), for: .highlighted)
+        } else {
+            faveButton.setImage(UIImage(named: "Star"), for: .normal)
+            faveButton.setImage(UIImage(named: "StarFilled"), for: .highlighted)
+        }
+
 
     }
 

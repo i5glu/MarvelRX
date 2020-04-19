@@ -10,7 +10,9 @@ import UIKit
 import RxSwift
 
 struct CharacterModel {
+    let id: Int
     let name: String
     let description: String?
     let image: Observable<UIImage?>
+    var isFave: Bool = false
 }

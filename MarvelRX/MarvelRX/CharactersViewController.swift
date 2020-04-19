@@ -22,7 +22,7 @@ class CharactersViewController: UITableViewController {
 
         viewModel.characters.drive(tableView.rx.items(cellIdentifier: CharacterCell.reuseIdentifier, cellType: CharacterCell.self)) { row, model, cell in
             cell.configure(with: model)
-            cell.favoritesButton.rx.tap.asDriver().drive(onNext: { [weak self] in
+            cell.faveButton.rx.tap.asDriver().drive(onNext: { [weak self] in
                 self?.viewModel.saveCharacter.onNext(model)
             }).disposed(by: cell.bag)
         }.disposed(by: bag)

@@ -28,14 +28,25 @@ final class CharactersListViewModel: CharactersListViewModelProtocol {
     private(set) var saveCharacter = PublishSubject<CharacterModel>()
 
     init() {
-        saveCharacter.subscribe(onNext: { (character) in
-            // TODO: save to storage
+        saveCharacter.subscribe(onNext: { [unowned self] (characterModel) in
+            var characters = self.charactersSubject.value
+
+            guard let index = (characters.firstIndex { $0.id == characterModel.id }) else {
+                return
+            }
+
+            var character = characters.remove(at: index)
+            character.isFave.toggle()
+            characters.insert(character, at: index)
+
+            self.charactersSubject.accept(characters)
         }).disposed(by: bag)
 
         loadCharacters.subscribe(onNext: { [unowned self] (offset) in
             self.api.characters(offset: offset).map { [unowned self] in
                 $0.data.results.map {
-                    CharacterModel(name: $0.name,
+                    CharacterModel(id: $0.id,
+                                   name: $0.name,
                                    description: $0.description,
                                    image: self.api.loadImage(with: $0.thumbnail.url))
                 }
