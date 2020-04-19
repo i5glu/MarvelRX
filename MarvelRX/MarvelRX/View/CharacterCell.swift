@@ -13,7 +13,7 @@ import RxCocoa
 
 final class CharacterCell: UITableViewCell {
     static let reuseIdentifier = String(describing: CharacterCell.self)
-    private var bag = DisposeBag()
+    private(set) var bag = DisposeBag()
 
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -38,7 +38,7 @@ final class CharacterCell: UITableViewCell {
         return imageView
     }()
 
-    private let favoritesButton: UIButton = {
+    private(set) var favoritesButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "Star"), for: .normal)
         button.setImage(UIImage(named: "StarFilled"), for: .highlighted)

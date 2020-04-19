@@ -12,11 +12,12 @@ import RxCocoa
 protocol CharactersListViewModelProtocol {
     var characters: Driver<[CharacterModel]> { get }
     var loadCharacters: PublishSubject<Int> { get }
+    var saveCharacter: PublishSubject<CharacterModel> { get }
 }
 
 final class CharactersListViewModel: CharactersListViewModelProtocol {
     private let api = API()
-    private let bag = DisposeBag()
+    let bag = DisposeBag()
 
     private var charactersSubject = BehaviorRelay<[CharacterModel]>(value: [])
     var characters: Driver<[CharacterModel]> {
@@ -24,8 +25,13 @@ final class CharactersListViewModel: CharactersListViewModelProtocol {
     }
 
     private(set) var loadCharacters = PublishSubject<Int>()
+    private(set) var saveCharacter = PublishSubject<CharacterModel>()
 
     init() {
+        saveCharacter.subscribe(onNext: { (character) in
+            // TODO: save to storage
+        }).disposed(by: bag)
+
         loadCharacters.subscribe(onNext: { [unowned self] (offset) in
             self.api.characters(offset: offset).map { [unowned self] in
                 $0.data.results.map {
